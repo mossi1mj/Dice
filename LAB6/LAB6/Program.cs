@@ -6,19 +6,20 @@ namespace LAB6
     {
         static void Main(string[] args)
         {
-            bool resumeApp = Program.Second("Welcome to the Grand Circus Casino! Roll the dice? (y/n):\n=========================================================");
+            bool resumeApp = Second("Welcome to the Grand Circus Casino! Roll the dice? (y/n):\n=========================================================");
             while (resumeApp)
             {
-                Console.Write("How many sides should each die have?");
+                Console.Write("How many sides should each die have? ");
                 int num = int.Parse(Console.ReadLine());
-                var random = new Random();
-                int dice1 = random.Next(1, num);
-                Console.WriteLine(dice1);
-                int dice2 = random.Next(1, num);
-                Console.WriteLine(dice2);
-                int sum = dice2 + dice1;
 
-                if (dice1 == 1 && dice2 == 1)
+                var rand = new Random();
+                int diceOne = rand.Next(1, num);
+                Console.WriteLine(diceOne);
+                int diceTwo = rand.Next(1, num);
+                Console.WriteLine(diceTwo);
+                int sum = diceTwo + diceOne;
+
+                if (diceOne == 1 && diceTwo == 1)
                 {
                     Console.WriteLine("You rolled a Snake Eyes!");
                 }
@@ -26,17 +27,17 @@ namespace LAB6
                 {
                     Console.WriteLine("Craps!");
                 }
-                else if (dice1 == 6 && dice2 == 6)
+                else if (diceOne == 6 && diceTwo == 6)
                 {
                     Console.WriteLine("Box Cars");
                 }
 
-                resumeApp = Program.Second("Continue? (y/n)");
+                resumeApp = Second("Continue? (y/n)");
             }
         }
-        static bool Second(string prompt)
+        public static bool Second(string title)
         {
-            Console.WriteLine(prompt);
+            Console.WriteLine(title);
             string answer = Console.ReadLine().ToLower();
 
             while (answer != "y" && answer != "n")
